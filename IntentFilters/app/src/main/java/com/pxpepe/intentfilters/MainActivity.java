@@ -25,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
         EditText txtTelefone = findViewById(R.id.txtTelefonar);
 
-        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", txtTelefone.getText().toString(), null));
+        Intent intent = new Intent(Intent.ACTION_DIAL,
+                Uri.fromParts("tel", txtTelefone.getText().toString(), null));
         startActivity(intent);
     }
 
