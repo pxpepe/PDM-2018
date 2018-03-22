@@ -1,5 +1,6 @@
 package com.pxpepe.tickets;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +23,9 @@ import java.net.URLEncoder;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String PREFERENCIAS_TICKER = "PREFERENCIAS_TICKER";
+    private static final String SPINNER_POSITION = "SPINNER_POSITION";
+
     private void colocarInfoSpiner() {
 
         Spinner spinner = (Spinner) findViewById(R.id.spinerName);
@@ -35,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
 
         // Aplicamos ao spinner
         spinner.setAdapter(adapter);
+
+        SharedPreferences prefs = getSharedPreferences(PREFERENCIAS_TICKER, MODE_PRIVATE);
+        int position = prefs.getInt(SPINNER_POSITION, 0);
+        spinner.setSelection(position);
 
     }
 
@@ -56,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
         EditText txtDesc = findViewById(R.id.txtDesc);
         String desc = txtDesc.getText().toString();
+
+        guardarItemSharedPreferences(mySpinner.getSelectedItemPosition());
 
         String parametros = "";
         try {
@@ -80,6 +90,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         queue.add(stringRequest);
+
+    }
+
+    private void guardarItemSharedPreferences(int position) {
+
+        SharedPreferences.Editor editor = getSharedPreferences(PREFERENCIAS_TICKER, MODE_PRIVATE).edit();
+        editor.putInt(SPINNER_POSITION, position);
+        editor.apply();
 
     }
 
