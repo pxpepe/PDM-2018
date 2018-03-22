@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Tickets</string>
+    <string name="pedido">Pedido</string>
+    <string name="atendido">Atendido</string>
+    <string name="inroduza_a_descri_o">Inroduza a Descrição</string>
+    <string-array name="array_alunos">
+        <item>Selecionar...</item>
+        <item>Célsio</item>
+        <item>Diogo</item>
+        <item>Fábio</item>
+        <item>Leonardo</item>
+        <item>Luís</item>
+        <item>Socorro</item>
+        <item>Miguel</item>
+        <item>Rafael</item>
+    </string-array>
+</resources>
